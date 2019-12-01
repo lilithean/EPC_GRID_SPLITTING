@@ -17,9 +17,14 @@ Follow the following steps to do an all-splitting EPC calculation.
    - ```PREFIX``` prefix for the QE calculations
    - ```DIR_SCF``` the directory contains the scf temperatory files, also the ```prefix.a2fsave``` file should be copied to this directory
    - ```DIR_PHONON``` temperatory directory will contain all phonon and EPC files
-   - ```NQ1; NQ2; NQ3``` equal to ```nq1; nq2; nq3``` in QE
+   - ```NQ1; NQ2; NQ3``` equal to ```nq1, nq2, nq3``` in QE
    - ```FIL_DYN``` equals to ```fildyn``` in QE
    - ```FIL_DVSCF``` equals to ```fildvscvf``` in QE
+> remember, no space between the variables and the "equal signs" in bash:
+```DIR_PHONON=/gpfs/scratch/qe_output      # this is good```
+```DIR_PHONON =/gpfs/scratch/qe_output     # this is bad```
+```DIR_PHONON= /gpfs/scratch/qe_output     # this is also bad```
+
 4. Initial the dynamic patterns, run:
 ```epc_all_grid.sh init```
 This will copy the scf files to ```DIR_PHONON``` and do initialization. In ```dyn0``` file you will see how many q-points are there.
