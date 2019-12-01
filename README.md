@@ -11,7 +11,7 @@ Follow the following steps to do an all-splitting EPC calculation.
    - Temperatory files from a pre-converged scf run, i.e. the ```outdir``` in QE
    - ```prefix.a2fsave``` file from QE
    - The ```epc_all_grid.sh``` script
-3. Edit the configuration section in the script:
+2. Edit the configuration section in the script:
    - ```CMD_SUBMIT``` command to submit jobs to the remote cluster, e.g. ```sbatch```
    - ```CMD_LD_ESPRESSO``` command to make sure your system can find QE exectuables, e.g. ```module load espresso/6.2.1```
    - ```PREFIX``` prefix for the QE calculations
@@ -28,15 +28,15 @@ DIR_PHONON =/gpfs/scratch/qe_output     # this is bad
 DIR_PHONON= /gpfs/scratch/qe_output     # this is also bad
 ```
 
-4. Initial the dynamic patterns, run:
+3. Initial the dynamic patterns, run:
 ```epc_all_grid.sh init```
 This will copy the scf files to ```DIR_PHONON``` and do initialization. In ```dyn0``` file you will see how many q-points are there.
-5. Edit the ```FIRST_Q; LAST_Q``` in the script. E.g. if you want to calculate only one q-points, say Gamma point, use ```FIRST_Q=1; LAST_Q=1```.
-6. Edit the ```QE template``` and ```SLURM template``` in the script to fit your needs.
-7. Do grid phonon calculation, run:
+4. Edit the ```FIRST_Q; LAST_Q``` in the script. E.g. if you want to calculate only one q-points, say Gamma point, use ```FIRST_Q=1; LAST_Q=1```.
+5. Edit the ```QE template``` and ```SLURM template``` in the script to fit your needs.
+6. Do grid phonon calculation, run:
 ```epc_all_grid.sh grid```
-8. Wait until all phonon jobs are finished.
-9. Do EPC calculation, run:
+7. Wait until all phonon jobs are finished.
+8. Do EPC calculation, run:
 ```epc_all_grid.sh elph```
    
 
