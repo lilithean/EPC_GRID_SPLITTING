@@ -8,9 +8,9 @@ Electron-Phonon Coupling (EPC) calculation in Quantum Espresso (QE) program with
 Follow the following steps to do an all-splitting EPC calculation.
 (If you need any information of EPC with [Quantum Espresso](https://www.quantum-espresso.org/), tutorials and examples can be found at [this](https://github.com/QEF/q-e) link.)
 1. Before performing an all-splitting EPC calculation, one should prepare the following files:
-   a. Temperatory files from a pre-converged scf run, i.e. the ```outdir```;
-   b. ```prefix.a2fsave``` file;
-   c. The ```epc_all_grid.sh``` script.
+   - Temperatory files from a pre-converged scf run, i.e. the ```outdir```;
+   - ```prefix.a2fsave``` file;
+   - The ```epc_all_grid.sh``` script.
 3. Edit the configuration section in the script:
    - ```CMD_SUBMIT``` command to submit the job to the remote cluster```;
    - ```CMD_LD_ESPRESSO``` command to load QE module thus your system can find QE exectuables;
