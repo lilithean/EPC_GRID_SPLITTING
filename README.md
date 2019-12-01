@@ -13,8 +13,7 @@ Follow the following steps to do an all-splitting EPC calculation.
    - The ```epc_all_grid.sh``` script.
 3. Edit the configuration section in the script:
    - ```CMD_SUBMIT``` command to submit jobs to the remote cluster, e.g. ```sbatch```;
-   - ```CMD_LD_ESPRESSO``` command to load QE module thus your system can find QE exectuables, e.g. 
-     ```module load espresso/6.2.1```;
+   - ```CMD_LD_ESPRESSO``` command to make sure your system can find QE exectuables, e.g. ```module load espresso/6.2.1```;
    - ```PREFIX``` prefix for the QE calculations;
    - ```DIR_SCF``` the directory contains the scf temperatory files, also the ```prefix.a2fsave``` file should be copied to this directory;
    - ```DIR_PHONON``` temperatory directory will contain all phonon and EPC files;
