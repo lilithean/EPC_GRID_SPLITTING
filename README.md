@@ -1,7 +1,7 @@
 # All-Splitting EPC Script
 Electron-Phonon Coupling (EPC) calculation in Quantum Espresso (QE) program with q-mesh and irreducible representation splitted. 
-1. The script will create mulitiple jobs calculating phonon and submit them to the remote cluster. 
-2. After the phonon jobs are done, the script will collect the output files, create  and submit another set of jobs to calculate the EPC paramaters at each q-points.
+1. The script will create (and submit to remote cluster) a set of jobs to calculate phonon. 
+2. After the phonon jobs are done, the script will collect the output files, create and submit another set of jobs to calculate the EPC paramaters at each q-points.
 
 
 ## Toturial
