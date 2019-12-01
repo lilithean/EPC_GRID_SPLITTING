@@ -27,7 +27,7 @@ This will copy the scf files to ```DIR_PHONON``` and do initialization. In ```dy
 6. Edit the ```QE template``` and ```SLURM template``` in the script to fit your needs.
 7. Do grid phonon calculation, run:
 ```epc_all_grid.sh grid```
-8. Waiting until all phonon jobs are finished.
+8. Wait until all phonon jobs are finished.
 9. Do EPC calculation, run:
 ```epc_all_grid.sh elph```
    
