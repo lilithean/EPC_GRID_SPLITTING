@@ -8,18 +8,18 @@ Electron-Phonon Coupling (EPC) calculation in Quantum Espresso (QE) program with
 Follow the following steps to do an all-splitting EPC calculation.
 (If you need any information of EPC with [Quantum Espresso](https://www.quantum-espresso.org/), tutorials and examples can be found at [this](https://github.com/QEF/q-e) link.)
 1. Before performing an all-splitting EPC calculation, one should prepare the following files:
-   - Temperatory files from a pre-converged scf run, i.e. the ```outdir``` in QE;
-   - ```prefix.a2fsave``` file from QE;
-   - The ```epc_all_grid.sh``` script.
+   - Temperatory files from a pre-converged scf run, i.e. the ```outdir``` in QE
+   - ```prefix.a2fsave``` file from QE
+   - The ```epc_all_grid.sh``` script
 3. Edit the configuration section in the script:
-   - ```CMD_SUBMIT``` command to submit jobs to the remote cluster, e.g. ```sbatch```;
-   - ```CMD_LD_ESPRESSO``` command to make sure your system can find QE exectuables, e.g. ```module load espresso/6.2.1```;
-   - ```PREFIX``` prefix for the QE calculations;
-   - ```DIR_SCF``` the directory contains the scf temperatory files, also the ```prefix.a2fsave``` file should be copied to this directory;
-   - ```DIR_PHONON``` temperatory directory will contain all phonon and EPC files;
-   - ```NQ1; NQ2; NQ3``` equal to ```nq1; nq2; nq3``` in QE;
-   - ```FIL_DYN``` equals to ```fildyn``` in QE;
-   - ```FIL_DVSCF``` equals to ```fildvscvf``` in QE.
+   - ```CMD_SUBMIT``` command to submit jobs to the remote cluster, e.g. ```sbatch```
+   - ```CMD_LD_ESPRESSO``` command to make sure your system can find QE exectuables, e.g. ```module load espresso/6.2.1```
+   - ```PREFIX``` prefix for the QE calculations
+   - ```DIR_SCF``` the directory contains the scf temperatory files, also the ```prefix.a2fsave``` file should be copied to this directory
+   - ```DIR_PHONON``` temperatory directory will contain all phonon and EPC files
+   - ```NQ1; NQ2; NQ3``` equal to ```nq1; nq2; nq3``` in QE
+   - ```FIL_DYN``` equals to ```fildyn``` in QE
+   - ```FIL_DVSCF``` equals to ```fildvscvf``` in QE
 4. Initial the dynamic patterns, run:
 ```epc_all_grid.sh init```
 This will copy the scf files to ```DIR_PHONON``` and do initialization. In ```dyn0``` file you will see how many q-points are there.
