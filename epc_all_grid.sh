@@ -258,15 +258,15 @@ cp -r ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.q_${q}/${PREFIX}.save/ ${DIR_PHONON}/$
 cp -r ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.q_${q}/${PREFIX}.xml ${DIR_PHONON}/${q}/_ph0/${PREFIX}.q_${q}/
 #cp -r ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.q_${q}/${PREFIX}.wfc* ${DIR_PHONON}/${q}/_ph0/${PREFIX}.q_${q}/
 
-SZ_DVSCF=$(($(wc -c < ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.q_${q}/${PREFIX}.dvscf1)/${PAT_MODES[0]}))
-SZ_DVSCF_PAW=$(($(wc -c < ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.q_${q}/${PREFIX}.dvscf_paw1)/${PAT_MODES[0]}))
-LST_DVSCF_PAW=$(ls ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.q_${q}/ | grep "dvscf_paw")
+SZ_DVSCF=$(($(wc -c < ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.q_${q}/${PREFIX}.${FIL_DVSCF}1)/${PAT_MODES[0]}))
+SZ_DVSCF_PAW=$(($(wc -c < ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.q_${q}/${PREFIX}.${FIL_DVSCF}_paw1)/${PAT_MODES[0]}))
+LST_DVSCF_PAW=$(ls ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.q_${q}/ | grep "${FIL_DVSCF}_paw")
 
 else
 
-SZ_DVSCF=$(($(wc -c < ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.dvscf1)/${PAT_MODES[0]}))
-SZ_DVSCF_PAW=$(($(wc -c < ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.dvscf_paw1)/${PAT_MODES[0]}))
-LST_DVSCF_PAW=$(ls ${DIR_PHONON}/${q}.1/_ph0/ | grep "dvscf_paw")
+SZ_DVSCF=$(($(wc -c < ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.${FIL_DVSCF}1)/${PAT_MODES[0]}))
+SZ_DVSCF_PAW=$(($(wc -c < ${DIR_PHONON}/${q}.1/_ph0/${PREFIX}.${FIL_DVSCF}_paw1)/${PAT_MODES[0]}))
+LST_DVSCF_PAW=$(ls ${DIR_PHONON}/${q}.1/_ph0/ | grep "${FIL_DVSCF}_paw")
 fi
 
 mode=0
@@ -280,7 +280,7 @@ cp -f ${DIR_PHONON}/${q}.${irr}/_ph0/${PREFIX}.phsave/dynmat.${q}.${irr}.xml ${D
 
 
 if [ ${q} == 1 ]; then
-dd bs=${SZ_DVSCF} count=${PAT_MODES[irr-1]} skip=${mode} seek=${mode} if=${DIR_PHONON}/${q}.${irr}/_ph0/${PREFIX}.dvscf1 of=${DIR_PHONON}/${q}/_ph0/${PREFIX}.dvscf1 status=none
+dd bs=${SZ_DVSCF} count=${PAT_MODES[irr-1]} skip=${mode} seek=${mode} if=${DIR_PHONON}/${q}.${irr}/_ph0/${PREFIX}.${FIL_DVSCF}1 of=${DIR_PHONON}/${q}/_ph0/${PREFIX}.dvscf1 status=none
 
 for dvscf_paw in ${LST_DVSCF_PAW}; do
 dd bs=${SZ_DVSCF_PAW} count=${PAT_MODES[irr-1]} skip=${mode} seek=${mode} if=${DIR_PHONON}/${q}.${irr}/_ph0/${dvscf_paw} of=${DIR_PHONON}/${q}/_ph0/${dvscf_paw} status=none
@@ -288,7 +288,7 @@ done # close dvscf_paw
 
 else
 
-dd bs=${SZ_DVSCF} count=${PAT_MODES[irr-1]} skip=${mode} seek=${mode} if=${DIR_PHONON}/${q}.${irr}/_ph0/${PREFIX}.q_${q}/${PREFIX}.dvscf1 of=${DIR_PHONON}/${q}/_ph0/${PREFIX}.q_${q}/${PREFIX}.dvscf1 status=none
+dd bs=${SZ_DVSCF} count=${PAT_MODES[irr-1]} skip=${mode} seek=${mode} if=${DIR_PHONON}/${q}.${irr}/_ph0/${PREFIX}.q_${q}/${PREFIX}.${FIL_DVSCF}1 of=${DIR_PHONON}/${q}/_ph0/${PREFIX}.q_${q}/${PREFIX}.dvscf1 status=none
 
 for dvscf_paw in ${LST_DVSCF_PAW}; do
 dd bs=${SZ_DVSCF_PAW} count=${PAT_MODES[irr-1]} skip=${mode} seek=${mode} if=${DIR_PHONON}/${q}.${irr}/_ph0/${PREFIX}.q_${q}/${dvscf_paw} of=${DIR_PHONON}/${q}/_ph0/${PREFIX}.q_${q}/${dvscf_paw} status=none
